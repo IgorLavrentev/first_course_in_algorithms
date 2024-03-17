@@ -41,8 +41,14 @@ class LinkedList:
         return final_list
 
     def delete(self, val, all): # метод удаления всех узлов по конкретному значению
+        # исключение при удалении одного элемента
+        if self.head.value == val and self.head.next == None:
+            self.head.next = None
+            self.head.value = None
+            return
+
         # проверка первого элемента списка
-        if self.head.value == val: 
+        if self.head.value == val:
             node_previous = self.head
             self.head = self.head.next
             if all == False:
@@ -53,7 +59,7 @@ class LinkedList:
         while node is not None: # пока указатель node не равен None
 
             # проверка последнего элемента списка
-            if self.tail.value == val and i == s_list.len():
+            if self.tail.value == val and node.next == None:
                 node_previous.next = None
                 break
             # проверка середины списка
@@ -68,28 +74,28 @@ class LinkedList:
             node_previous = node
             node = node.next
 
-    def clean(self): # очистка всего содержимого (создание пустого списка) 
+    def clean(self): # очистка всего содержимого (создание пустого списка)
         self.head.next = None
         self.head.value = None
 
     def len(self): # метод вычисления текущей длины списка
         LinkedList_len = 0 # переменная для подсчета длины списка
         node = self.head # начальное значение для "прохода" по всему связанному списку
-        while node is not None: 
+        while node is not None:
             LinkedList_len += 1
             node = node.next # переход к следующему элементу node
         return LinkedList_len
 
     def insert(self, afterNode, newNode): # метод вставки узла newNode
-        # если переменная после которой необходимо вставить значение = None, 
+        # если переменная после которой необходимо вставить значение = None,
         # задаем элемент как начало связанного списка "head"
-        if afterNode == None: 
+        if afterNode == None:
             newNode.next = self.head
             self.head = newNode
             return
 
         # поиск элемента, после которого необходимо вставить значение
-        node = self.head 
+        node = self.head
         while node is not None:
             if node.value == afterNode.value:
                 newNode.next = node.next
