@@ -32,6 +32,8 @@ class LinkedList:
         return None
 
     def find_all(self, val):
+        if self.head == None:
+            return None
         final_list = []
         node = self.head
         while node is not None:
@@ -41,6 +43,10 @@ class LinkedList:
         return final_list
 
     def delete(self, val, all): # метод удаления всех узлов по конкретному значению
+        # исключение при пустом списке
+        if self.head == None:
+            return
+
         # исключение при удалении одного элемента
         if self.head.value == val and self.head.next == None:
             self.head.next = None
@@ -62,6 +68,7 @@ class LinkedList:
             if self.tail.value == val and node.next == None:
                 node_previous.next = None
                 break
+
             # проверка середины списка
             if node.value == val:
                 node_previous.next = node.next
