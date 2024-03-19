@@ -59,7 +59,7 @@ class LinkedList:
             self.head = self.head.next
             if all == False:
                 return
-        i = 0
+
         # проверка середины связанного списка и его крайнего правого элемента
         node = self.head
         while node is not None: # пока указатель node не равен None
@@ -75,10 +75,8 @@ class LinkedList:
                 node_previous.next = node.next
                 if all == False:
                     break
-                i += 1
                 node = node.next
                 continue
-            i += 1
             node_previous = node
             node = node.next
 
@@ -111,21 +109,3 @@ class LinkedList:
                 return
             node = node.next # переход к следующему элементу node
 
-
-# исходные данные
-#n1 = Node(55)
-#n2 = Node(55)
-#n1.next = n2 # 12 -> 55
-#s_list = LinkedList()
-#s_list.add_in_tail(n1)
-#s_list.add_in_tail(n2)
-#s_list.add_in_tail(Node(55))
-#s_list.add_in_tail(Node(55))
-#s_list.add_in_tail(Node(55))
-#s_list.add_in_tail(Node(55))
-#s_list.print_all_nodes()
-#print()
-
-#s_list.delete(55, True)
-#s_list.print_all_nodes()
-print()
