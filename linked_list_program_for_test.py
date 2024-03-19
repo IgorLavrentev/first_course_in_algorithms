@@ -21,7 +21,7 @@ class MyTests(unittest.TestCase):
         s_list.delete(12, False)
         self.assertEqual(s_list.head.next.value, 13)
 
-    def test3(self): # проверка среднего элемента связанного списка
+    def test3(self): # проверка последнего элемента связанного списка
         s_list = LinkedList()
         s_list.add_in_tail(Node(11))
         s_list.add_in_tail(Node(12))
