@@ -67,6 +67,7 @@ class LinkedList:
             # проверка последнего элемента списка
             if self.tail.value == val and node.next == None:
                 node_previous.next = None
+                self.tail.value = node_previous.value
                 break
 
             # проверка середины списка
@@ -110,3 +111,21 @@ class LinkedList:
                 return
             node = node.next # переход к следующему элементу node
 
+
+# исходные данные
+#n1 = Node(55)
+#n2 = Node(55)
+#n1.next = n2 # 12 -> 55
+#s_list = LinkedList()
+#s_list.add_in_tail(n1)
+#s_list.add_in_tail(n2)
+#s_list.add_in_tail(Node(55))
+#s_list.add_in_tail(Node(55))
+#s_list.add_in_tail(Node(55))
+#s_list.add_in_tail(Node(55))
+#s_list.print_all_nodes()
+#print()
+
+#s_list.delete(55, True)
+#s_list.print_all_nodes()
+print()
