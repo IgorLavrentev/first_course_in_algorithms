@@ -29,5 +29,20 @@ class MyTests(unittest.TestCase):
         s_list.delete(13, False)
         self.assertEqual(s_list.tail.value, 12)
 
+    def test4(self): 
+        s_list = LinkedList()
+        s_list.add_in_tail(Node(0)) # head
+        s_list.add_in_tail(Node(0)) # head.next
+        s_list.add_in_tail(Node(1)) # head.next.next
+        s_list.add_in_tail(Node(1)) # head.next.next.next
+        s_list.add_in_tail(Node(1)) # head.next.next.next.next
+        s_list.add_in_tail(Node(2))
+        s_list.add_in_tail(Node(2))
+        s_list.delete(1, False)
+        self.assertEqual(s_list.head.next.value, 0)
+        self.assertEqual(s_list.head.next.next.value, 1)
+        self.assertEqual(s_list.head.next.next.next.value, 1)
+        self.assertEqual(s_list.head.next.next.next.next.value, 2)
+
 if __name__ == '__main__':
     unittest.main()
