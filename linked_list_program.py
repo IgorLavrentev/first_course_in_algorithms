@@ -63,6 +63,13 @@ class LinkedList:
         # проверка середины связанного списка и его крайнего правого элемента
         node = self.head
         while node is not None: # пока указатель node не равен None
+            if node.value == val and self.head.value == val:
+                node_previous.next = node.next
+                self.head = self.head.next
+                if all == False:
+                    return
+                node = node.next
+                continue
 
             # проверка последнего элемента списка
             if self.tail.value == val and node.next == None:
