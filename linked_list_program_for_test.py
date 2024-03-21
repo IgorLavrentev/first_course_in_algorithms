@@ -10,7 +10,7 @@ class MyTests(unittest.TestCase):
         s_list.add_in_tail(Node(11))
         s_list.add_in_tail(Node(12))
         s_list.add_in_tail(Node(13))
-        s_list.delete(11, False)
+        s_list.delete(11)
         self.assertEqual(s_list.head.value, 12)
 
     def test2(self): # проверка среднего элемента связанного списка
@@ -18,7 +18,7 @@ class MyTests(unittest.TestCase):
         s_list.add_in_tail(Node(11))
         s_list.add_in_tail(Node(12))
         s_list.add_in_tail(Node(13))
-        s_list.delete(12, False)
+        s_list.delete(12)
         self.assertEqual(s_list.head.next.value, 13)
 
     def test3(self): # проверка последнего элемента связанного списка
@@ -26,7 +26,7 @@ class MyTests(unittest.TestCase):
         s_list.add_in_tail(Node(11))
         s_list.add_in_tail(Node(12))
         s_list.add_in_tail(Node(13))
-        s_list.delete(13, False)
+        s_list.delete(13)
         self.assertEqual(s_list.tail.value, 12)
 
     def test4(self): 
@@ -38,7 +38,7 @@ class MyTests(unittest.TestCase):
         s_list.add_in_tail(Node(1)) # head.next.next.next.next
         s_list.add_in_tail(Node(2))
         s_list.add_in_tail(Node(2))
-        s_list.delete(1, False)
+        s_list.delete(1)
         self.assertEqual(s_list.head.next.value, 0)
         self.assertEqual(s_list.head.next.next.value, 1)
         self.assertEqual(s_list.head.next.next.next.value, 1)
