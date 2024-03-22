@@ -49,7 +49,8 @@ class LinkedList:
 
         # исключение при удалении одного элемента
         if self.head.value == val and self.head.next == None:
-            self.head = None
+            self.head.next = None
+            self.head.value = None
             return
 
         # проверка середины связанного списка и его крайнего правого элемента
@@ -66,17 +67,18 @@ class LinkedList:
             if self.tail.value == val and node.next == None:
                 node_previous.next = None
                 self.tail.value = node_previous.value
-                break
+                return
             # проверка середины списка
             if node.value == val:
                 node_previous.next = node.next
                 if all == False:
-                    break
+                    return
                 node = node.next
                 continue
             # переход к следующему значению списка
             node_previous = node
             node = node.next
+        return
 
     def clean(self): # очистка всего содержимого (создание пустого списка)
         self.head = None
