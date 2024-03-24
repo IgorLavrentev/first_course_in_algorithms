@@ -112,7 +112,7 @@ class LinkedList:
             if self.tail.value == afterNode.value and node.next is None:
                 newNode.next = None
                 node.next = newNode
-                self.tail.value = newNode.value
+                self.tail = newNode
                 return
             if node.value == afterNode.value:
                 newNode.next = node.next
