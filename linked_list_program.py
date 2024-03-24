@@ -93,6 +93,12 @@ class LinkedList:
         return LinkedList_len
 
     def insert(self, afterNode, newNode): # метод вставки узла newNode
+        # вставка элемента в пустой список
+        if afterNode is None and self.head is None:
+            self.head = newNode
+            self.tail = newNode
+            return
+
         # если переменная после которой необходимо вставить значение = None,
         # задаем элемент как начало связанного списка "head"
         if afterNode is None:
