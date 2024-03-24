@@ -47,20 +47,21 @@ class LinkedList:
         # исключение при пустом списке
         if self.head == None:
             return
+
         # исключение при удалении одного элемента
         if self.head.value == val and self.head.next == None:
-            self.head.next = None
-            self.head.value = None
+            self.head = None
             return
-        # проверка первого элемента списка
-        if self.head.value == val:
-            node_previous = self.head
-            self.head = self.head.next
-            if all == False:
-                return
         # проверка середины связанного списка и его крайнего правого элемента
         node = self.head
+        node_previous = self.head
         while node is not None:  # пока указатель node не равен None
+            # проверка первого элемента списка
+            if self.head.value == val:
+                self.head = self.head.next
+                if all == False:
+                    return
+                continue
             # проверка последнего элемента списка
             if self.tail.value == val and node.next == None:
                 node_previous.next = None
@@ -73,12 +74,12 @@ class LinkedList:
                     break
                 node = node.next
                 continue
+            # переход к следующему значению списка
             node_previous = node
             node = node.next
 
     def clean(self):  # очистка всего содержимого (создание пустого списка)
-        self.head.next = None
-        self.head.value = None
+        self.head = None
 
     def len(self):  # метод вычисления текущей длины списка
         LinkedList_len = 0  # переменная для подсчета длины списка
@@ -98,6 +99,11 @@ class LinkedList:
         # поиск элемента, после которого необходимо вставить значение
         node = self.head
         while node is not None:
+            if self.tail.value == afterNode.value and node.next == None:
+                newNode.next = None
+                node.next = newNode
+                self.tail.value = newNode.value
+                return
             if node.value == afterNode.value:
                 newNode.next = node.next
                 node.next = newNode
