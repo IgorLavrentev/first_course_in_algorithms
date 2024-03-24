@@ -32,9 +32,9 @@ class LinkedList:
         return None
 
     def find_all(self, val):
-        if self.head is None:
-            return None
         final_list = []
+        if self.head is None:
+            return final_list
         node = self.head
         while node is not None:
             if node.value == val:
