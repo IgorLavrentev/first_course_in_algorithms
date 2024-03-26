@@ -127,7 +127,8 @@ class LinkedList2:
             self.head = newNode
             self.tail = newNode
             return
-        # вставка элемента в не пустой список
+        # вставка элемента в непустой список
         newNode.next = self.head
         self.head = newNode
+        self.head.next.prev = newNode
         return
