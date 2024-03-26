@@ -31,25 +31,18 @@ class LinkedList:
             print(node.value)
             node = node.next
 
-    def all_node(
-        self,
-    ):  # метод формирования списка значений всех элементов связанного списка
-        final_list = []
-        node = self.head
-        while node is not None:
-            final_list.append(node.value)
-            node = node.next
-        return final_list
 
 # функция формирования списка каждый элемент которого
 # равен сумме соответствующих элементов входных списков
 def linked_lists_2(one, two):
-    if one.len() == two.len():
-        list_1 = one.all_node()
-        list_2 = two.all_node()
-        list_3 = LinkedList()
-        for i in range(one.len()):
-            it = list_1[i] + list_2[i]
-            list_3.add_in_tail(Node(it))
-        return list_3
-    return None
+    if one.len() != two.len():
+        return None
+    final_list = LinkedList()  # итоговый список
+    node_1 = one.head
+    node_2 = two.head
+    while node_1 is not None:
+        it = node_1.value + node_2.value  # вычисление суммы
+        final_list.add_in_tail(Node(it))  # добавление суммы
+        node_1 = node_1.next
+        node_2 = node_2.next
+    return final_list
