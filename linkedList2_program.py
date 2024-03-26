@@ -92,6 +92,7 @@ class LinkedList2:
         # вставка элемента в пустой список
         if afterNode is None and self.head is None:
             self.head = newNode
+            self.tail = newNode
             return
         # если переменная после которой необходимо вставить значение = None,
         # помещаем новый элемент в конец списка
@@ -124,6 +125,7 @@ class LinkedList2:
         # вставка элемента в пустой список
         if self.head is None:
             self.head = newNode
+            self.tail = newNode
             return
         # вставка элемента в не пустой список
         newNode.next = self.head
