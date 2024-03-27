@@ -41,8 +41,8 @@ def linked_lists_2(one, two):
     node_1 = one.head
     node_2 = two.head
     while node_1 is not None:
-        it = node_1.value + node_2.value  # вычисление суммы
-        final_list.add_in_tail(Node(it))  # добавление суммы
+        # вычисление и добавление суммы
+        final_list.add_in_tail(Node(node_1.value + node_2.value))
         node_1 = node_1.next
         node_2 = node_2.next
     return final_list
