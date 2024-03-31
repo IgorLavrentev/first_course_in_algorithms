@@ -28,8 +28,8 @@ def parentheses(string):  # функция проверки сбалансиро
             st.push("(")
         if string[i] == ")": # если закрывающая скобка удаляем
             st.pop()
-        if st.size() == 0 and i == len(string) - 1:
-            return True
-        if st.size() != 0 and i == len(string) - 1:
-            return False
         i += 1
+    if st.size() == 0:
+        return True
+    if st.size() != 0:
+        return False
