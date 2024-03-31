@@ -24,14 +24,11 @@ def parentheses(string):  # функция проверки сбалансиро
     st = Stack()
     i = 0  # счетчик для прохода по строке
     while i < len(string):
-        if st.peek() is None and string[i] == ")":
+        if st.size() == 0 and string[i] == ")":
             return False
         if string[i] == "(": # если открывающая скобка добавляем
             st.push("(")
         if string[i] == ")": # если закрывающая скобка удаляем
             st.pop()
         i += 1
-    if st.size() == 0:
-        return True
-    if st.size() != 0:
-        return False
+    return st.size() == 0
