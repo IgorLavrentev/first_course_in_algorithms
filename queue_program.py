@@ -6,7 +6,7 @@ class Queue:
         self.queue.append(item)
 
     def dequeue(self): # выдача из головы
-        if self.queue is None:
+        if len(self.queue) is None:
             return None # если очередь пустая
         el = self.queue[0]
         del self.queue[0]
