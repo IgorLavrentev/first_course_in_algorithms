@@ -22,5 +22,4 @@ class Queue:
 # функция, которая "вращает" очередь по кругу на N элементов
 def queue_circle(qu, n): # qu- очередь, n- количество элементов
     for _ in range(n):
-        x = qu.dequeue()
-        qu.enqueue(x)
+        qu.enqueue(qu.dequeue())
