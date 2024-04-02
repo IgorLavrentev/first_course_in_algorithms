@@ -29,14 +29,12 @@ class Queue:
         self.st_1.push(item)
 
     def dequeue(self): # выдача из головы
-        if self.st_1.size == 0:
+        if self.st_1.size == 0 and self.st_2.size == 0:
             return None # если очередь пустая
-        for _ in range(self.st_1.size() - 1):
-            self.st_2.push(self.st_1.pop())
-        el = self.st_1.pop()
-        for _ in range(self.st_2.size()):
-            self.st_1.push(self.st_2.pop())
-        return el
+        if self.st_2.size() == 0:
+            for _ in range(self.st_1.size()):
+                self.st_2.push(self.st_1.pop())
+        return self.st_2.pop()
 
     def size(self):
         return self.st_1.size() # размер очереди
