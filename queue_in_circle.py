@@ -15,10 +15,6 @@ class Queue:
     def size(self):
         return len(self.queue) # размер очереди
 
-    def print_queue(self):
-        for i in range(len(self.queue)):
-            print(self.queue[i])
-
 # функция, которая "вращает" очередь по кругу на N элементов
 def queue_circle(qu, n): # qu- очередь, n- количество элементов
     for _ in range(n):
