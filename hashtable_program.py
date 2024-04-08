@@ -12,16 +12,26 @@ class HashTable:
 
     def seek_slot(self, value):  # находит индекс пустого слота для значения, или None
         ind = self.hash_fun(value)  # получаем индекс слота
+        # если хэш-функция вернула None
         if ind is None:
             return None
-        # работа с коллизиями
+        # если слот пустой - возвращаем индекс слота
         if self.slots[ind] is None:
             return ind
+        # работа с коллизиями
+        st = self.step
         for _ in range(2):
-            for i in range(ind, len(self.slots), self.step):
+            i = ind + st
+            while i != ind:
+                # переход в начало списка с учетом шага
+                if i >= len(self.slots):
+                    i = i - len(self.slots)
+                # если слот пустой возвращаем индекс i
                 if self.slots[i] is None:
                     return i
-            self.step = self.step + 1
+                # переход к следующему значению
+                i += st
+            st += 1
         return None
 
     def put(self, value):
