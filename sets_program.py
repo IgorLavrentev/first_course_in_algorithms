@@ -59,11 +59,6 @@ class PowerSet(HashTable):
 
     def __init__(self, sz, stp):
         super(PowerSet, self).__init__(sz, stp)
-        self.size_table = sz  # размер хэш-таблицы
-        self.step = (
-            stp  # длина шага (количество слотов) для поиска следующего свободного слота
-        )
-        self.slots = [None] * self.size_table
 
     def size(self):  # количество элементов в множестве
         return len(self.slots)
