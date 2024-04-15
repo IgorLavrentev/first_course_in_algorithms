@@ -53,12 +53,14 @@ class HashTable:
                 return i
         return None
 
-
 # наследуемый от HashTable класс
 class PowerSet(HashTable):
 
     def __init__(self, sz, stp):
-        super(PowerSet, self).__init__(sz, stp)
+        if sz > 0 and stp > 0:
+            super(PowerSet, self).__init__(sz, stp)
+        else: # исключение при вызове конструктора
+            raise ValueError
 
     def size(self):  # количество элементов в множестве
         return len(self.slots)
@@ -210,9 +212,7 @@ class PowerSet(HashTable):
         ):  # подсчет совпадений элементов текущего множества и множества set2
             if set2.slots[el_1] is not None and self.get(set2.slots[el_1]) is True:
                 counter += 1
-        if (
-            counter_0 == counter
-        ):  # сравнение элементов множества set2 и совпадений
+        if counter_0 == counter:  # сравнение элементов множества set2 и совпадений
             # элементов текущего множества и множества set2
             return True
         return False
