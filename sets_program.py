@@ -8,7 +8,7 @@ class HashTable:
 
     def hash_fun(self, value):  # хэш-функция
         if len(value) > self.size_table or len(value) < 0:
-            return None
+            return 0
         remainder = len(value.encode()) % self.size_table
         return remainder
 
@@ -53,13 +53,14 @@ class HashTable:
                 return i
         return None
 
+
 # наследуемый от HashTable класс
 class PowerSet(HashTable):
 
     def __init__(self, sz, stp):
         if sz > 0 and stp > 0:
             super(PowerSet, self).__init__(sz, stp)
-        else: # исключение при вызове конструктора
+        else:  # исключение при вызове конструктора
             raise ValueError
 
     def size(self):  # количество элементов в множестве
