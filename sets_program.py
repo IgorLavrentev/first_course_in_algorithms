@@ -24,38 +24,32 @@ class PowerSet:
         return False
 
     def intersection(self, set2):  # пересечение текущего множества и set2
-        set3 = PowerSet()
+        set3: PowerSet() = PowerSet()
         for i in range(len(self.powerset)):
             if set2.get(self.powerset[i]):
                 set3.put(self.powerset[i])
-        if set3.size() != 0:
-            return set3
-        return None
+        return set3
 
     def union(self, set2):  # объединение текущего множества и set2
-        set3 = PowerSet()
+        set3: PowerSet() = PowerSet()
         for i in range(len(self.powerset)):  # добавление элементов из первого множества
             set3.put(self.powerset[i])
         for j in range(set2.size()):  # добавление элементов из второго множества
             if set2.sequence_number(j) not in self.powerset:
                 set3.put(set2.sequence_number(j))
-        if set3.size() >= len(self.powerset):
-            return set3
-        return None
+        return set3
 
     def difference(self, set2):  # разница текущего множества и set2
-        set3 = PowerSet()
+        set3: PowerSet() = PowerSet()
         for i in range(len(self.powerset)):
             if set2.get(self.powerset[i]):
                 continue
             set3.put(self.powerset[i])
-        if set3.size() > 0:
-            return set3
-        return None
+        return set3
 
     # возвращает True, если set2 есть подмножество текущего множества, иначе False
     def issubset(self, set2):
-        counter = 0
+        counter: int = 0
         for i in range(len(self.powerset)):
             if set2.get(self.powerset[i]):
                 counter += 1
