@@ -7,8 +7,6 @@ class BloomFilter:
         self.filter_len = f_len
         # создаём битовый массив длиной f_len
         self.bloom_array = bitarray(f_len)
-        # for i in range(f_len):
-        #    self.bloom_array += b'0'
 
     def hash1(self, str1):
         code_previous = 0  # предыдущий результат
