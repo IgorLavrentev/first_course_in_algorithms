@@ -1,11 +1,10 @@
-from bitarray import bitarray
-
-
 class BloomFilter:
 
     def __init__(self, f_len):
         self.filter_len = f_len  # creating a bit array of length f_len
-        self.bloom_array = bitarray(f_len)
+        self.bloom_array = []
+        for _ in range(f_len):
+            self.bloom_array.append(0)
 
     def hash1(self, str1):
         code_previous = 0  # previous result
