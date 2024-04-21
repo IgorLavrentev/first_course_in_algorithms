@@ -2,9 +2,7 @@ class BloomFilter:
 
     def __init__(self, f_len):
         self.filter_len = f_len  # creating a bit array of length f_len
-        self.bloom_array = []
-        for _ in range(f_len):
-            self.bloom_array.append(0)
+        self.bloom_array = [0] * f_len
 
     def hash1(self, str1):
         code_previous = 0  # previous result
@@ -21,13 +19,12 @@ class BloomFilter:
         return code % self.filter_len
 
     def add(self, str1):  # adding a line str1 to the filter
-        self.bloom_array[self.hash1(str1)] = 1
-        self.bloom_array[self.hash2(str1)] = 1
+        self.bloom_array[self.hash1(str1)] |= 1  # bit logical addition
+        self.bloom_array[self.hash2(str1)] |= 1  # bit logical addition
 
     def is_value(self, str1):  # checking whether the string str1 is in the filter
-        if (
-            self.bloom_array[self.hash1(str1)] == 1
-            and self.bloom_array[self.hash2(str1)] == 1
-        ):
+        if (self.bloom_array[self.hash1(str1)] & 1) & (
+            self.bloom_array[self.hash2(str1)] & 1
+        ):  # bit logical multiplication
             return True
         return False
